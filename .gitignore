@@ -1,3 +1,5 @@
+obj/
+bin/
 .classpath
 .project
 .settings/

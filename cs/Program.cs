@@ -3,10 +3,10 @@ using RabbitMQ.Client.Events;
 
 var factory = new ConnectionFactory
 {
-	HostName = "<host>",
-	UserName = "<user>",
-	Password = "<password>",
-	VirtualHost = "<virtual_host>"
+	HostName = Environment.GetEnvironmentVariable("RMQ_HOST"),
+	UserName = "guest",
+	Password = "guest",
+	VirtualHost = "/"
 };
 using var connection = factory.CreateConnection();
 using var channel = connection.CreateModel();
@@ -29,9 +29,8 @@ consumer.Received += (model, ea) =>
 		received = 0;
 	}
 };
-channel.BasicConsume(queue: "<queue>",
-	autoAck: true,
-	consumer: consumer);
+
+channel.BasicConsume(queue: "rabbitmq-users-9_ohuUbX9NY", autoAck: true, consumer: consumer);
 
 Console.WriteLine(" Press [enter] to exit.");
 Console.ReadLine();

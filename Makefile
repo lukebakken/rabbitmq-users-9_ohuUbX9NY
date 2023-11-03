@@ -1,6 +1,10 @@
-.PHONY: build publish run-java run-cs
+.PHONY: setup build publish run-java run-cs
 
 RMQ_HOST ?= shostakovich
+export RMQ_HOST
+
+setup:
+	curl -4vu guest:guest -XPUT -H'Content-Type: application/json' "$(RMQ_HOST):15672/api/queues/%2F/rabbitmq-users-9_ohuUbX9NY" -d '{"auto_delete":false,"durable":true}'
 
 build:
 	cd cs && dotnet build
