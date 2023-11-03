@@ -6,8 +6,8 @@ import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.Duration;
 
-public class Receive {
-
+public class App 
+{
     private final static String QUEUE_NAME = "<queue>";
 	private static int received;
 	private static LocalDateTime previousDateTime;
