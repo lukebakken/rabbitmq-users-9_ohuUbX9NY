@@ -1,4 +1,4 @@
-package com.rabbitmq.rabbitmq-users-9_ohuUbX9NY;
+package com.rabbitmq.rabbitmq_users_9_ohuUbX9NY;
 
 import static org.junit.Assert.assertTrue;
 
