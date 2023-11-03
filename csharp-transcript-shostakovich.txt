@@ -1,0 +1,137 @@
+lbakken@PROKOFIEV ~/development/lukebakken/rabbitmq-users-9_ohuUbX9NY (main=)
+$ make setup publish run-cs
+curl -4vu guest:guest -XPUT -H'Content-Type: application/json' "shostakovich:15672/api/queues/%2F/rabbitmq-users-9_ohuUbX9NY" -d '{"auto_delete":false,"durable":true}'
+*   Trying 192.168.1.5:15672...
+* Connected to shostakovich (192.168.1.5) port 15672 (#0)
+* Server auth using Basic with user 'guest'
+> PUT /api/queues/%2F/rabbitmq-users-9_ohuUbX9NY HTTP/1.1
+> Host: shostakovich:15672
+> Authorization: Basic Z3Vlc3Q6Z3Vlc3Q=
+> User-Agent: curl/7.81.0
+> Accept: */*
+> Content-Type: application/json
+> Content-Length: 36
+>
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 204 No Content
+< content-security-policy: script-src 'self' 'unsafe-eval' 'unsafe-inline'; object-src 'self'
+< date: Fri, 03 Nov 2023 14:54:22 GMT
+< server: Cowboy
+< vary: accept, accept-encoding, origin
+<
+* Connection #0 to host shostakovich left intact
+cd rabbitmq-perf-test && make ARGS="--uri amqp://shostakovich --predeclared --queue rabbitmq-users-9_ohuUbX9NY --pmessages 655360 --producers 1 --consumers 0 --confirm 16 --size 4096" run
+make[1]: Entering directory '/home/lbakken/development/lukebakken/rabbitmq-users-9_ohuUbX9NY/rabbitmq-perf-test'
+Warning: JAVA_HOME environment variable is not set.
+[INFO] Scanning for projects...
+[INFO]
+[INFO] -----------------------< com.rabbitmq:perf-test >-----------------------
+[INFO] Building RabbitMQ Performance Testing Tool 2.21.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- buildnumber:3.2.0:create (default) @ perf-test ---
+[INFO] Executing: /bin/sh -c cd '/home/lbakken/development/lukebakken/rabbitmq-users-9_ohuUbX9NY/rabbitmq-perf-test' && 'git' 'rev-parse' '--verify' 'HEAD'
+[INFO] Working directory: /home/lbakken/development/lukebakken/rabbitmq-users-9_ohuUbX9NY/rabbitmq-perf-test
+[INFO] Storing buildNumber: 9be8eb91f67db1badc9564ef7be33e7e2134dc7b at timestamp: 1699023263664
+[INFO] Executing: /bin/sh -c cd '/home/lbakken/development/lukebakken/rabbitmq-users-9_ohuUbX9NY/rabbitmq-perf-test' && 'git' 'symbolic-ref' 'HEAD'
+[INFO] Working directory: /home/lbakken/development/lukebakken/rabbitmq-users-9_ohuUbX9NY/rabbitmq-perf-test
+[INFO] Storing scmBranch: main
+[INFO]
+[INFO] --- build-helper:3.4.0:add-source (add-extension-source) @ perf-test ---
+[INFO] Source directory: /home/lbakken/development/lukebakken/rabbitmq-users-9_ohuUbX9NY/rabbitmq-perf-test/src/main/extensions added.
+[INFO]
+[INFO] --- build-helper:3.4.0:add-source (add-source) @ perf-test ---
+[INFO] Source directory: /home/lbakken/development/lukebakken/rabbitmq-users-9_ohuUbX9NY/rabbitmq-perf-test/src/java-packaging/java added.
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ perf-test ---
+[INFO] Copying 7 resources from src/main/resources to target/classes
+[INFO] Copying 5 resources from html to target/classes/static
+[INFO] The encoding used to copy filtered properties files have not been set. This means that the same encoding will be used to copy filtered properties files as when copying other filtered resources. This might not be what you want! Run your build with --debug to see which files might be affected. Read more at https://maven.apache.org/plugins/maven-resources-plugin/examples/filtering-properties-files.html
+[INFO]
+[INFO] --- compiler:3.11.0:compile (default-compile) @ perf-test ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.833 s
+[INFO] Finished at: 2023-11-03T07:54:23-07:00
+[INFO] ------------------------------------------------------------------------
+Warning: JAVA_HOME environment variable is not set.
+[INFO] Scanning for projects...
+[INFO]
+[INFO] -----------------------< com.rabbitmq:perf-test >-----------------------
+[INFO] Building RabbitMQ Performance Testing Tool 2.21.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- exec:3.1.0:java (default-cli) @ perf-test ---
+id: test-075426-111, starting producer #0
+id: test-075426-111, starting producer #0, channel #0
+id: test-075426-111, time 1.001 s, sent: 14355 msg/s, confirmed: 14339 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 382/763/1034/2115/4395 µs
+id: test-075426-111, time 2.001 s, sent: 18495 msg/s, confirmed: 18495 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 328/710/901/1259/2483 µs
+id: test-075426-111, time 3.001 s, sent: 19427 msg/s, confirmed: 19429 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 366/752/858/1105/1953 µs
+id: test-075426-111, time 4.001 s, sent: 23470 msg/s, confirmed: 23468 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 299/588/719/937/1349 µs
+id: test-075426-111, time 5.001 s, sent: 21826 msg/s, confirmed: 21828 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 328/649/789/1008/1319 µs
+id: test-075426-111, time 6.001 s, sent: 26364 msg/s, confirmed: 26362 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 311/555/603/805/1223 µs
+id: test-075426-111, time 7.001 s, sent: 19282 msg/s, confirmed: 19282 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 326/738/844/1202/2243 µs
+id: test-075426-111, time 8.001 s, sent: 20314 msg/s, confirmed: 20317 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 345/682/822/1144/2432 µs
+id: test-075426-111, time 9.001 s, sent: 19733 msg/s, confirmed: 19732 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 339/729/837/1065/1811 µs
+id: test-075426-111, time 10.001 s, sent: 24624 msg/s, confirmed: 24622 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 299/565/665/887/1107 µs
+id: test-075426-111, time 11.001 s, sent: 23527 msg/s, confirmed: 23527 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 330/579/715/913/1263 µs
+id: test-075426-111, time 12.001 s, sent: 23223 msg/s, confirmed: 23223 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 312/619/731/953/1249 µs
+id: test-075426-111, time 13.001 s, sent: 26422 msg/s, confirmed: 26422 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 313/553/604/783/1001 µs
+id: test-075426-111, time 14.001 s, sent: 22601 msg/s, confirmed: 22601 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 290/611/748/1029/1561 µs
+id: test-075426-111, time 15.001 s, sent: 22007 msg/s, confirmed: 22007 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 345/617/742/1075/1747 µs
+id: test-075426-111, time 16.001 s, sent: 20609 msg/s, confirmed: 20609 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 329/645/796/1186/1797 µs
+id: test-075426-111, time 17.001 s, sent: 21647 msg/s, confirmed: 21647 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 294/646/758/1064/1548 µs
+id: test-075426-111, time 18.001 s, sent: 24380 msg/s, confirmed: 24380 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 324/570/670/873/1297 µs
+id: test-075426-111, time 19.001 s, sent: 22798 msg/s, confirmed: 22798 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 340/604/736/970/1470 µs
+id: test-075426-111, time 20.001 s, sent: 21060 msg/s, confirmed: 21061 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 293/700/796/963/1231 µs
+id: test-075426-111, time 21.001 s, sent: 22746 msg/s, confirmed: 22745 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 272/666/756/959/1405 µs
+id: test-075426-111, time 22.001 s, sent: 23747 msg/s, confirmed: 23747 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 338/591/736/927/1227 µs
+id: test-075426-111, time 23.001 s, sent: 24518 msg/s, confirmed: 24524 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 309/566/661/896/1130 µs
+id: test-075426-111, time 24.001 s, sent: 24101 msg/s, confirmed: 24098 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 333/573/682/943/1194 µs
+id: test-075426-111, time 25.001 s, sent: 23868 msg/s, confirmed: 23866 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 331/592/721/965/1224 µs
+id: test-075426-111, time 26.001 s, sent: 23402 msg/s, confirmed: 23401 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 345/590/739/931/1198 µs
+id: test-075426-111, time 27.001 s, sent: 21397 msg/s, confirmed: 21399 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 315/661/807/1135/1611 µs
+id: test-075426-111, time 28.001 s, sent: 20564 msg/s, confirmed: 20564 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 331/686/846/1205/1675 µs
+id: test-075426-111, time 29.001 s, sent: 18468 msg/s, confirmed: 18468 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 337/716/900/1263/2889 µs
+id: test-075426-111, time 30.001 s, sent: 16735 msg/s, confirmed: 16749 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 323/661/828/1238/1879 µs
+test stopped (Producer reached message limit)
+id: test-075426-111, sending rate avg: 21784 msg/s
+id: test-075426-111, receiving rate avg: 0 msg/s
+id: test-075426-111, confirm latency min/median/75th/95th/99th 333/615/765/1043/1395 µs
+make[1]: Leaving directory '/home/lbakken/development/lukebakken/rabbitmq-users-9_ohuUbX9NY/rabbitmq-perf-test'
+cd cs && dotnet run
+ [*] Waiting for messages.
+ Press [enter] to exit.
+Messages / sec: 23219
+Messages / sec: 20088
+Messages / sec: 19353
+Messages / sec: 21968
+Messages / sec: 24208
+Messages / sec: 24174
+Messages / sec: 22569
+Messages / sec: 23572
+Messages / sec: 23449
+Messages / sec: 20822
+Messages / sec: 20293
+Messages / sec: 21334
+Messages / sec: 16145
+Messages / sec: 22456
+Messages / sec: 21601
+Messages / sec: 23926
+Messages / sec: 23116
+Messages / sec: 23926
+Messages / sec: 23880
+Messages / sec: 24096
+Messages / sec: 23690
+Messages / sec: 23698
+Messages / sec: 22692
+Messages / sec: 22403
+Messages / sec: 24856
+Messages / sec: 23847
+Messages / sec: 22190
+Messages / sec: 20847
+Messages / sec: 25203
