@@ -1,0 +1,169 @@
+C:\Users\lbakken\development\lukebakken\rabbitmq-users-9_ohuUbX9NY [main ≡ +0 ~1 -0 !]
+> make setup
+curl -4vu guest:guest -XPUT -H'Content-Type: application/json' "shostakovich:15672/api/queues/%2F/rabbitmq-users-9_ohuUbX9NY" -d '{"auto_delete":false,"durable":true}'
+* processing: shostakovich:15672/api/queues/%2F/rabbitmq-users-9_ohuUbX9NY
+*   Trying 192.168.1.5:15672...
+* Connected to shostakovich (192.168.1.5) port 15672
+* Server auth using Basic with user 'guest'
+> PUT /api/queues/%2F/rabbitmq-users-9_ohuUbX9NY HTTP/1.1
+> Host: shostakovich:15672
+> Authorization: Basic Z3Vlc3Q6Z3Vlc3Q=
+> User-Agent: curl/8.2.1
+> Accept: */*
+> Content-Type: application/json
+> Content-Length: 36
+>
+< HTTP/1.1 201 Created
+< content-length: 0
+< content-security-policy: script-src 'self' 'unsafe-eval' 'unsafe-inline'; object-src 'self'
+< date: Wed, 15 Nov 2023 13:46:56 GMT
+< server: Cowboy
+< vary: accept, accept-encoding, origin
+<
+* Connection #0 to host shostakovich left intact
+
+C:\Users\lbakken\development\lukebakken\rabbitmq-users-9_ohuUbX9NY [main ≡ +0 ~1 -0 !]
+> make publish
+cd rabbitmq-perf-test && make ARGS="--uri amqp://shostakovich --predeclared --queue rabbitmq-users-9_ohuUbX9NY --pmessages 65536 --producers 1 --consumers 0 --confirm 16 --size 81920" run
+make[1]: Entering directory 'C:/Users/lbakken/development/lukebakken/rabbitmq-users-9_ohuUbX9NY/rabbitmq-perf-test'
+...
+...
+...
+id: test-054712-280, starting producer #0
+id: test-054712-280, starting producer #0, channel #0
+id: test-054712-280, time 1.014 s, sent: 1446 msg/s, confirmed: 1430 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 2465/11033/11172/11415/12352 ┬╡s
+id: test-054712-280, time 45.003 s, sent: 1443 msg/s, confirmed: 1443 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 9038/11069/11170/11399/12300 ┬╡s
+test stopped (Producer reached message limit)
+id: test-054712-280, sending rate avg: 1435 msg/s
+id: test-054712-280, receiving rate avg: 0 msg/s
+id: test-054712-280, confirm latency min/median/75th/95th/99th 2234/11071/11142/11368/12528 ┬╡s
+make[1]: Leaving directory 'C:/Users/lbakken/development/lukebakken/rabbitmq-users-9_ohuUbX9NY/rabbitmq-perf-test'
+
+C:\Users\lbakken\development\lukebakken\rabbitmq-users-9_ohuUbX9NY [main ≡ +0 ~2 -0 !]
+> make run-java
+cd java && mvn exec:java '-Dexec.mainClass=com.rabbitmq.rabbitmq_users_9_ohuUbX9NY.App'
+[INFO] Scanning for projects...
+[INFO]
+[INFO] --< com.rabbitmq.rabbitmq-users-9_ohuUbX9NY:rabbitmq-users-9_ohuUbX9NY >--
+[INFO] Building rabbitmq-users-9_ohuUbX9NY 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- exec:3.1.0:java (default-cli) @ rabbitmq-users-9_ohuUbX9NY ---
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+ [*] Waiting for messages. To exit press CTRL+C
+Messages / sec: 1294
+Messages / sec: 1436
+Messages / sec: 1435
+Messages / sec: 1430
+Messages / sec: 1435
+Messages / sec: 1434
+Messages / sec: 1436
+Messages / sec: 1435
+Messages / sec: 1436
+Messages / sec: 1435
+Messages / sec: 1432
+Messages / sec: 1433
+Messages / sec: 1435
+Messages / sec: 1429
+Messages / sec: 1435
+Messages / sec: 1435
+Messages / sec: 1431
+Messages / sec: 1436
+Messages / sec: 1431
+Messages / sec: 1436
+Messages / sec: 1437
+Messages / sec: 1435
+Messages / sec: 1435
+Messages / sec: 1433
+Messages / sec: 1431
+Messages / sec: 1437
+Messages / sec: 1433
+Messages / sec: 1436
+Messages / sec: 1436
+Messages / sec: 1425
+Messages / sec: 1436
+Messages / sec: 1435
+Messages / sec: 1440
+Messages / sec: 1436
+Messages / sec: 1436
+Messages / sec: 1436
+Messages / sec: 1436
+Messages / sec: 1435
+Messages / sec: 1420
+Messages / sec: 1437
+Messages / sec: 1431
+Messages / sec: 1405
+Messages / sec: 1436
+Messages / sec: 1436
+Messages / sec: 1412
+make: *** [Makefile:17: run-java] Error 130
+
+C:\Users\lbakken\development\lukebakken\rabbitmq-users-9_ohuUbX9NY [main ≡ +0 ~3 -0 !]
+> make publish
+cd rabbitmq-perf-test && make ARGS="--uri amqp://shostakovich --predeclared --queue rabbitmq-users-9_ohuUbX9NY --pmessages 65536 --producers 1 --consumers 0 --confirm 16 --size 81920" run
+...
+...
+...
+id: test-054956-760, time 43.015 s, sent: 1443 msg/s, confirmed: 1443 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 7658/11048/11189/11417/12011 ┬╡s
+id: test-054956-760, time 44.014 s, sent: 1440 msg/s, confirmed: 1440 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 2738/11074/11105/11304/13061 ┬╡s
+id: test-054956-760, time 45.010 s, sent: 1444 msg/s, confirmed: 1444 msg/s, nacked: 0 msg/s, min/median/75th/95th/99th confirm latency: 7566/11069/11140/11343/11955 ┬╡s
+test stopped (Producer reached message limit)
+id: test-054956-760, sending rate avg: 1435 msg/s
+id: test-054956-760, receiving rate avg: 0 msg/s
+id: test-054956-760, confirm latency min/median/75th/95th/99th 5187/11067/11133/11333/12116 ┬╡s
+make[1]: Leaving directory 'C:/Users/lbakken/development/lukebakken/rabbitmq-users-9_ohuUbX9NY/rabbitmq-perf-test'
+
+C:\Users\lbakken\development\lukebakken\rabbitmq-users-9_ohuUbX9NY [main ≡ +0 ~3 -0 !]
+> make run-cs
+cd cs && dotnet run
+ [*] Waiting for messages.
+ Press [enter] to exit.
+Messages / sec: 1353
+Messages / sec: 1371
+Messages / sec: 1353
+Messages / sec: 1406
+Messages / sec: 1388
+Messages / sec: 1403
+Messages / sec: 1399
+Messages / sec: 1392
+Messages / sec: 1404
+Messages / sec: 1392
+Messages / sec: 1396
+Messages / sec: 1396
+Messages / sec: 1406
+Messages / sec: 1390
+Messages / sec: 1400
+Messages / sec: 1399
+Messages / sec: 1386
+Messages / sec: 1398
+Messages / sec: 1405
+Messages / sec: 1383
+Messages / sec: 1402
+Messages / sec: 1402
+Messages / sec: 1407
+Messages / sec: 1395
+Messages / sec: 1402
+Messages / sec: 1400
+Messages / sec: 1401
+Messages / sec: 1379
+Messages / sec: 1392
+Messages / sec: 1398
+Messages / sec: 1393
+Messages / sec: 1397
+Messages / sec: 1402
+Messages / sec: 1406
+Messages / sec: 1404
+Messages / sec: 1396
+Messages / sec: 1403
+Messages / sec: 1402
+Messages / sec: 1406
+Messages / sec: 1393
+Messages / sec: 1396
+Messages / sec: 1383
+Messages / sec: 1408
+Messages / sec: 1400
+Messages / sec: 1378
+Messages / sec: 1400
